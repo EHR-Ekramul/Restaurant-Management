@@ -7,6 +7,7 @@ $_SESSION["username_error"] = '';
 $_SESSION["password_error"] = '';
 $_SESSION["login_page_error"] = '';
 $_SESSION["logged_in"] = false;
+$_SESSION["user_id"] = '';
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -48,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         unset($_SESSION["password_error"]);
         unset($_SESSION["login_page_error"]);
         $_SESSION["logged_in"] = true;
+        $_SESSION["user_id"] = $result['userId'];
 
         // Redirect to dashboard
         if($result['userRole'] == 'customer'){
