@@ -1,4 +1,16 @@
-<?php session_start(); ?>
+<?php
+session_start(); 
+require "../models/userData.php";
+if(isset($_SESSION["logged_in"])&& $_SESSION['logged_in'] && isset($_COOKIE["user"])){
+    $result = fetchUserById($_COOKIE["user"]);
+    if($result["userRole"] == "customer"){
+        header("Location: dashboardHome.php");
+    } else {
+        header("Location: employeeDashboard.php");
+    }
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

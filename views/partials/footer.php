@@ -1,3 +1,3 @@
 <footer>
-    <p>All rights reserved. Food Zone &copy; 2024</p>
+    <p>All rights reserved. American Dine &copy; 2024</p>
 </footer>
