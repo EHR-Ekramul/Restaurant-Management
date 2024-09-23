@@ -1,0 +1,126 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: left;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+header .header-content h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Footer styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 1000;
+    line-height: 30px;
+}
+
+/* Dashboard container styles */
+.dashboard-container {
+    display: flex;
+    margin-top: 60px; /* Adjust for header */
+    margin-bottom: 40px; /* Adjust for footer */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 200px;
+    background-color: #444;
+    height: calc(100vh - 100px); /* Full height minus header and footer */
+    position: fixed;
+    top: 60px; /* Below the header */
+    left: 0;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+}
+
+/* General hover styles */
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    color: #ffcc00;
+    background-color: #333; /* Highlight background */
+    border-radius: 5px;
+}
+
+/* Logout button styles */
+.sidebar ul li.logout {
+    margin-top: auto; /* Pushes logout to the bottom */
+}
+
+.sidebar ul li.logout a {
+    background-color: #444; /* Default same as sidebar */
+    text-align: center; /* Center align text */
+}
+
+/* Adjust hover effect for logout button */
+.sidebar ul li.logout a:hover {
+    background-color: #ff4c4c; /* Red on hover */
+    color: white; /* White text on hover */
+}
+
+/* Main content styles */
+.main-content {
+    margin-left: 220px; /* Adjust based on sidebar width */
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.main-content h2 {
+    color: #333;
+}
+
+.main-content p {
+    font-size: 18px;
+}
+
+/* Footer styles to fix position */
+footer {
+    height: 50px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}

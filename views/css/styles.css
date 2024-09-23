@@ -1,0 +1,153 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+  
+/* Login Form Styles */
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+  
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+  
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+  
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2863a7;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+.login-form button:hover {
+    background-color: #4776ac;
+}
+  
+.login-form .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+  
+.login-form .forgot-password-text,
+.login-form .register-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #555;
+}
+  
+.login-form .register-text a,
+.login-form .forgot-password-text a {
+    color: #2863a7;
+    text-decoration: none;
+}
+  
+.login-form .register-text a:hover,
+.login-form .forgot-password-text a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* Registration Form Styles */
+.registration-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.registration-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.registration-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2863a7;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background-color: #4776ac;
+}
+
+.registration-form .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.registration-form .login-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #555;
+}
+
+.registration-form .login-text a {
+    color: #2863a7;
+    text-decoration: none;
+}
+
+.registration-form .login-text a:hover {
+    text-decoration: underline;
+}
+/* Error Messages */
+span {
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 7px;
+}
