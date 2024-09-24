@@ -11,16 +11,14 @@ $totalPendingRequests = UserControl::getTotalPendingRequests();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="qqwidth=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../views/css/style.css"> 
     
     <title>Dashboard</title>
 </head>
 <body>
 
-<div class="header">
-    <h1>AMERICAN DINE</h1>
-</div>
+<?php include 'partials/employeeHeader.php'; ?>
 
 <div class="sidebar">
     <ul>
@@ -33,7 +31,6 @@ $totalPendingRequests = UserControl::getTotalPendingRequests();
 </div>
 
 <div class="home">
-    <h2>welcome, admin</h2>
     <fieldset>
         <legend>DASHBOARD</legend>
         <div class="box-container">
