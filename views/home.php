@@ -22,13 +22,15 @@ $totalPendingRequests = UserControl::getTotalPendingRequests();
 
 <div class="sidebar">
     <ul>
-        <li><a href="home.php" class="active">Home</a></li>
-        <li><a href="order_requests.php">Orders</a></li>
+        
+        <li><a href="../views/home.php" class="<?php echo $current_page == 'home.php' ? 'active' : ''; ?>">Home</a></li>
+        <li><a href="../views/order_requests.php" class="<?php echo $current_page == 'order_requests.php' ? 'active' : ''; ?>">Orders</a></li>
     </ul>
     <div class="logout-container">
-        <a href="../controllers/logoutAction.php" class="logout-button">Logout</a>
+        <a class="logout-button" href="../controllers/logoutAction.php">Logout</a>
     </div>
 </div>
+
 
 <div class="home">
     <fieldset>
