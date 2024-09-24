@@ -41,10 +41,13 @@ if(isset($_SESSION["logged_in"])&& $_SESSION['logged_in'] && isset($_COOKIE["use
                 <span id="lpasserr" style="color: red; font-size: 12px; display: block; margin-bottom: 7px;"><?php echo empty($_SESSION["password_error"]) ? "" : $_SESSION["password_error"]; ?></span>
             </div>
 
-            <div class="form-group remember-me">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember Me</label>
+            <div class="form-group remember-me" style="display: flex; align-items: bottom; margin-bottom: 15px;">
+                <input type="checkbox" id="remember" name="remember" style="margin-right: -160px; margin-left: -170px">
+                <label for="remember" style="color: #555;">Remember Me</label>
             </div>
+
+
+
 
             <button type="submit">Login</button>
 
@@ -52,7 +55,7 @@ if(isset($_SESSION["logged_in"])&& $_SESSION['logged_in'] && isset($_COOKIE["use
             <p class="error-message" style="color: red;"><?php echo empty($_SESSION["login_page_error"]) ? "" : $_SESSION["login_page_error"]; ?></p>
 
             <!-- Forgot password Link -->
-            <p class="forgot-password-text"><a href="forgot.php">Forgot Password?</a></p>
+            <!-- <p class="forgot-password-text"><a href="forgot.php">Forgot Password?</a></p> -->
 
             <!-- Link to registration page -->
             <p class="register-text">Don't have an account? <a href="registration.php">Register</a></p>

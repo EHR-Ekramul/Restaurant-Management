@@ -33,19 +33,19 @@ function isValid(form) {
   
     // Validate email
     if (email.trim() === "") {
-      emailError.innerHTML = "Email is required.";
+      emailError.innerHTML = "Email is required";
       isFormValid = false;
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      emailError.innerHTML = "Invalid email format.";
+      emailError.innerHTML = "Invalid email format";
       isFormValid = false;
     }
   
     // Validate phone number
     if (phone.trim() === "") {
-      phoneError.innerHTML = "Phone number is required.";
+      phoneError.innerHTML = "Phone number is required";
       isFormValid = false;
     } else if (!/^[0-9]{10,15}$/.test(phone)) {
-      phoneError.innerHTML = "Phone number must be between 10 to 15 digits.";
+      phoneError.innerHTML = "Phone number must be between 10 to 15 digits";
       isFormValid = false;
     }
   

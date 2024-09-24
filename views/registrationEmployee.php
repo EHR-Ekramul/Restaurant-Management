@@ -20,7 +20,7 @@ if(isset($_SESSION["logged_in"])&& $_SESSION['logged_in'] && isset($_COOKIE["use
   <title>Employee Registration</title>
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="js/registration.js"></script>
+  <script src="js/registrationEmployee.js"></script>
 
   <script>
     $(document).ready(function () {
@@ -123,7 +123,7 @@ if(isset($_SESSION["logged_in"])&& $_SESSION['logged_in'] && isset($_COOKIE["use
       <a class="role-button active" href="registrationEmployee.php">Be an Employee</a>
     </div>
 
-    <form action="../controllers/registrationAction.php" method="POST" novalidate onsubmit="return isValid(this)" class="registration-form">
+    <form action="../controllers/registrationEmployeeAction.php" method="POST" novalidate onsubmit="return isValid(this)" class="registration-form">
       <h2>Register as Employee</h2>
 
       <label for="username">Username</label>
@@ -144,11 +144,7 @@ if(isset($_SESSION["logged_in"])&& $_SESSION['logged_in'] && isset($_COOKIE["use
 
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
-      <span id="rpasserr" style="color: red; font-size: 12px; display: block; margin-bottom: 7px;"></span>
-
-      <label for="confirm_password">Confirm Password</label>
-      <input type="password" id="confirm_password" name="confirm_password" required>
-      <span id="rcpasserr" style="color: red; font-size: 12px; display: block; margin-bottom: 7px;"><?php echo empty($_SESSION["password_error"]) ? "" : $_SESSION["password_error"]; ?></span>
+      <span id="rpasserr" style="color: red; font-size: 12px; display: block; margin-bottom: 7px;"><?php echo empty($_SESSION["password_error"]) ? "" : $_SESSION["password_error"]; ?></span>
 
       <button type="submit">Register</button>
 
