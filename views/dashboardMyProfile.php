@@ -26,6 +26,7 @@ if (!$userInfo) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - My Profile</title>
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/profile.js"></script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -88,7 +89,7 @@ if (!$userInfo) {
             margin-top: 20px;
             width: 100%;
         }
-        .profile-info input, .profile-info span {
+        .profile-info input {
             display: block;
             width: 100%;
             padding: 12px;
@@ -132,6 +133,14 @@ if (!$userInfo) {
             color: #888;
             font-size: 14px;
         }
+        span {
+            color: red; /* Ensure text color is red */
+            font-size: 12px; /* Size of the error message */
+            margin-top: -10px; /* Adjust spacing as needed */
+            margin-bottom: 10px; /* Space below the message */
+            display: block; /* Keep it as a block for visibility */
+        }
+
     </style>
 </head>
 <body>
@@ -152,11 +161,17 @@ if (!$userInfo) {
                 <p>User ID: <?php echo htmlspecialchars($userInfo['userId']); ?></p>
 
                 <!-- Profile Info Section -->
-                <form action="../controllers/updateProfileAction.php" method="POST" id="profileForm" novalidate>
+                <form action="../controllers/updateProfileAction.php" method="POST" id="profileForm" novalidate onsubmit="return isValid(this)">
                     <div class="profile-info">
                         <input type="text" id="fullName" name="fullName" value="<?php echo htmlspecialchars($userInfo['fullName']); ?>" readonly>
+                        <span id="pfullName" style="color: red; font-size: 12px; display: block; margin-bottom: 7px;"><?php echo empty($_SESSION["pfullName_error"]) ? "" : $_SESSION["pfullName_error"]; ?></span>
+                        
                         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($userInfo['email']); ?>" readonly>
+                        <span id="pemail" style="color: red; font-size: 12px; display: block; margin-bottom: 7px;"><?php echo empty($_SESSION["email_error"]) ? "" : $_SESSION["email_error"]; ?></span>
+                        
                         <input type="text" id="phoneNumber" name="phoneNumber" value="<?php echo htmlspecialchars($userInfo['phoneNumber']); ?>" readonly>
+                        <span id="pphone" style="color: red; font-size: 12px; display: block; margin-bottom: 7px;"><?php echo empty($_SESSION["phone_error"]) ? "" : $_SESSION["phone_error"]; ?></span>
+                        
                         <input type="text" name="userStatus" value="Status: <?php echo htmlspecialchars($userInfo['userStatus']); ?>" readonly disabled>
                         <input type="text" name="created_at" value="Joined: <?php echo date('d-M-Y', strtotime($userInfo['created_at'])); ?>" readonly disabled>
 
@@ -177,6 +192,10 @@ if (!$userInfo) {
         const fullName = document.getElementById('fullName');
         const email = document.getElementById('email');
         const phoneNumber = document.getElementById('phoneNumber');
+        
+        const pfullName = document.getElementById('pfullName');
+        const pemail = document.getElementById('pemail');
+        const pphone = document.getElementById('pphone');
 
         editButton.addEventListener('click', function() {
             const isEditing = editButton.classList.contains('cancel');
@@ -191,6 +210,10 @@ if (!$userInfo) {
                 fullName.value = '<?php echo htmlspecialchars($userInfo['fullName']); ?>';
                 email.value = '<?php echo htmlspecialchars($userInfo['email']); ?>';
                 phoneNumber.value = '<?php echo htmlspecialchars($userInfo['phoneNumber']); ?>';
+
+                pfullName.innerHTML = '';
+                pemail.innerHTML = '';
+                pphone.innerHTML = '';
             } else {
                 // Enable editing: enable inputs and show the save button
                 editableFields.forEach(field => field.readOnly = false);
