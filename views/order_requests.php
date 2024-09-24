@@ -28,7 +28,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <li><a href="../views/order_requests.php" class="<?php echo $current_page == 'order_requests.php' ? 'active' : ''; ?>">Orders</a></li>
     </ul>
     <div class="logout-container">
-        <a class="logout-button" href="../logout.php">Logout</a>
+        <a class="logout-button" href="../controllers/logoutAction.php">Logout</a>
     </div>
 </div>
 

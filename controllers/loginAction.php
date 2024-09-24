@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = fetchUserByUsername($username); // Assuming this function returns user info or false
 
     if (!$result || !($password === $result['password'])) { // Use password_verify for hashed passwords
-        $_SESSION["login_page_error"] = "Invalid username or $password . {$result['password']}";
+        $_SESSION["login_page_error"] = "Invalid username or password";
         header("Location: ../views/login.php");
         exit(); // Ensure no further code is executed
     } else {
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($result['userRole'] == 'customer'){
             header("Location: ../views/dashboardHome.php");
         } else {
-            header("Location: ../views/employeeDashboard.php");
+            header("Location: ../views/home.php");
         }
         exit();
     }

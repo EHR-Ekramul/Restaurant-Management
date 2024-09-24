@@ -28,7 +28,7 @@ $totalPendingRequests = UserControl::getTotalPendingRequests();
         <li><a href="order_requests.php">Orders</a></li>
     </ul>
     <div class="logout-container">
-        <a href="logout.php" class="logout-button">Logout</a>
+        <a href="../controllers/logoutAction.php" class="logout-button">Logout</a>
     </div>
 </div>
 

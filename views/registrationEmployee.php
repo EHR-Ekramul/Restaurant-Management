@@ -6,7 +6,7 @@ if(isset($_SESSION["logged_in"])&& $_SESSION['logged_in'] && isset($_COOKIE["use
     if($result["userRole"] == "customer"){
         header("Location: dashboardHome.php");
     } else {
-        header("Location: employeeDashboard.php");
+        header("Location: home.php");
     }
     exit();
 }
