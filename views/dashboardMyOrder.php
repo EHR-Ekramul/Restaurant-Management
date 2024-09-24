@@ -136,24 +136,32 @@ $userOrders = fetchOrdersByUserId($userId);
         <p style="text-align: center;">Here you can view and track all your orders.</p>
 
         <div class="filter-container">
-            <form action="" method="GET" style="display: inline-block;">
-                <label for="status">Status:</label>
-                <select name="status" id="status">
-                    <option value="">All</option>
-                    <option value="pending" <?php echo (isset($_GET['status']) && $_GET['status'] === 'pending') ? 'selected' : ''; ?>>Pending</option>
-                    <option value="completed" <?php echo (isset($_GET['status']) && $_GET['status'] === 'completed') ? 'selected' : ''; ?>>Completed</option>
-                    <option value="canceled" <?php echo (isset($_GET['status']) && $_GET['status'] === 'canceled') ? 'selected' : ''; ?>>Canceled</option>
-                </select>
+            <form action="" method="GET" style="display: inline-block; width: 100%;">
+                <div style="float: left;">
+                    <!-- Clear Button -->
+                    <button type="button" onclick="window.location.href='dashboardMyOrder.php';" style="background-color: #f44336;">Clear</button>
+                </div>
 
-                <label for="date">Date:</label>
-                <input type="date" name="date" id="date" value="<?php echo isset($_GET['date']) ? $_GET['date'] : ''; ?>">
+                <div style="float: right;">
+                    <label for="status">Status:</label>
+                    <select name="status" id="status">
+                        <option value="">All</option>
+                        <option value="pending" <?php echo (isset($_GET['status']) && $_GET['status'] === 'pending') ? 'selected' : ''; ?>>Pending</option>
+                        <option value="completed" <?php echo (isset($_GET['status']) && $_GET['status'] === 'completed') ? 'selected' : ''; ?>>Completed</option>
+                        <option value="canceled" <?php echo (isset($_GET['status']) && $_GET['status'] === 'canceled') ? 'selected' : ''; ?>>Canceled</option>
+                    </select>
 
-                <label for="amount">Amount:</label>
-                <input type="number" name="amount" id="amount" placeholder="Max Amount" value="<?php echo isset($_GET['amount']) ? $_GET['amount'] : ''; ?>">
+                    <label for="date">Date:</label>
+                    <input type="date" name="date" id="date" value="<?php echo isset($_GET['date']) ? $_GET['date'] : ''; ?>">
 
-                <button type="submit">Filter</button>
+                    <label for="amount">Amount:</label>
+                    <input type="number" name="amount" id="amount" placeholder="Max Amount" value="<?php echo isset($_GET['amount']) ? $_GET['amount'] : ''; ?>">
+
+                    <button type="submit">Filter</button>
+                </div>
             </form>
         </div>
+
 
 
         <?php
@@ -184,7 +192,7 @@ $userOrders = fetchOrdersByUserId($userId);
                     <img src="../assets/food_images/<?php echo $foodItem['itemFileName']; ?>" alt="<?php echo htmlspecialchars($foodItem['itemName']); ?>">
                     <div class="order-details">
                         <div class="order-info">
-                            <strong><?php echo htmlspecialchars($foodItem['itemName']); ?><br><span><?php echo "ID: ".htmlspecialchars($order['orderId']); ?></span></strong> <!-- Food item title and ID -->
+                            <strong><?php echo htmlspecialchars($foodItem['itemName']); ?><br><span><?php echo "ID: ".htmlspecialchars($order['orderId']); ?></span><br><span><?php echo "Quantity: ".htmlspecialchars($order['orderQuantity']); ?></span></strong> <!-- Food item title and ID -->
                         </div>
                         <div class="order-meta">
                             <span>Date: <?php echo date("d-M-Y", strtotime($order['orderDate'])); ?></span> <!-- Date -->

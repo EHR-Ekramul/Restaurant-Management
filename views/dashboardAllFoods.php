@@ -92,11 +92,13 @@ if ($searchTerm !== '') {
             <p style="text-align: center;">List of all foods available in your restaurant.</p>
 
             <div class="search-container">
-                <form action="" method="GET">
+                <form action="" method="GET" style="display: inline-block;">
                     <input type="text" name="search" placeholder="Search for food items..." value="<?php echo htmlspecialchars($searchTerm); ?>">
                     <input type="submit" value="Search">
+                    <input type="button" value="Clear" onclick="window.location.href='dashboardAllFoods.php';" style="padding: 8px 12px; background-color: red; color: white; border: none; border-radius: 4px; margin-left: 5px;">
                 </form>
             </div>
+
 
             <?php foreach ($foodItems as $item): ?>
                 <div class="food-item">

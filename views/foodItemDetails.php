@@ -6,7 +6,7 @@ if (!(isset($_COOKIE['user']) || isset($_SESSION['logged_in']))) {
 }
 
 include '../models/foodData.php'; // Include the food data model
-$foodItem=null;
+$foodItem = null;
 // Fetch food item details based on the ID passed in the URL
 if (isset($_GET['id'])) {
     $itemId = intval($_GET['id']);
@@ -118,6 +118,30 @@ include "partials/sidebar.php"; // Include sidebar
             color: #333;
             margin-bottom: 20px; /* Space below product title */
         }
+        /* Address field styling */
+        .address-field {
+            margin-top: 20px;
+        }
+        .address-field label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .address-field textarea {
+            width: 100%;
+            min-height: 80px;
+            resize: vertical;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -150,14 +174,15 @@ include "partials/sidebar.php"; // Include sidebar
                         <button type="button" onclick="changeQuantity(1)">+</button>
                     </div>
 
+                    <!-- Address Field -->
+                    <div class="address-field">
+                        <label for="delivery-address">Delivery Address:</label>
+                        <textarea id="delivery-address" name="deliveryAddress" placeholder="Enter your delivery address"></textarea>
+                        <p id="address-error" class="error-message" style="display: none;">Address must be at least 10 characters long.</p>
+                    </div>
+
                     <!-- Checkout Button inside food-info -->
-                    <form action="checkout.php" method="POST">
-                        <input type="hidden" name="itemId" value="<?php echo $itemId; ?>">
-                        <input type="hidden" name="orderQuantity" id="orderQuantityInput" value="1">
-                        <!-- Checkout Button -->
-                    <button type="button" class="checkout-button" 
-                        onclick="redirectToCheckout(<?php echo $itemId; ?>)">Checkout</button>
-                    </form>
+                    <button type="button" class="checkout-button" onclick="validateAndCheckout(<?php echo $itemId; ?>)">Checkout</button>
                 </div>
             </div>
         </main>
@@ -175,14 +200,33 @@ include "partials/sidebar.php"; // Include sidebar
             } else if (amount === -1 && currentValue > 1) {
                 quantityInput.value = currentValue - 1;
             }
-            if(currentValue > maxQuantity){
-                quantityInput.value = maxQuantity;
+        }
+
+        function validateAndCheckout(itemId) {
+            var quantity = document.getElementById('order-quantity').value;
+            var address = document.getElementById('delivery-address').value.trim();
+            var addressError = document.getElementById('address-error');
+            
+            // Minimum length for address
+            var minAddressLength = 10;
+            
+            // Check if address is empty or too short
+            if (address === "" || address.length < minAddressLength) {
+                addressError.style.display = "block";
+                return;
+            } else {
+                addressError.style.display = "none";
+            }
+
+            // Confirmation before checkout
+            var confirmation = window.confirm(`You are about to order ${quantity} item(s). Do you want to proceed with this order?`);
+            
+            if (confirmation) {
+                // Redirect to checkout
+                window.location.href = `../controllers/checkoutAction.php?id=${itemId}&quantity=${quantity}&address=${encodeURIComponent(address)}`;
             }
         }
-        function redirectToCheckout(itemId) {
-            var quantity = document.getElementById('order-quantity').value;
-            window.location.href = `checkout.php?id=${itemId}&quantity=${quantity}`;
-        }
+
     </script>
 
     <?php include "partials/footer.php"; // Include footer ?>
